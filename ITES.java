@@ -15,16 +15,13 @@ import java.util.StringTokenizer;
 public class ITES {
 
 	public static class LCG {
-		private long seed;
-
-		public LCG() {
-			seed = 1983;
-		}
+		static final long mask = 1024L * 1024L * 1024L * 4L - 1L;
+		long seed = 1983;
 
 		public long next() {
-			long ret = seed;
-			seed = (long) (((seed * 214013) + 2531011) % Math.pow(2, 32));
-			return ret % 10000 + 1;
+			long ret = seed % 10000 + 1;
+			seed = (seed * 214013 + 2531011) & mask;
+			return ret;
 		}
 	}
 
@@ -33,6 +30,7 @@ public class ITES {
 		int caseCount = Integer.parseInt(br.readLine());
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < caseCount; i++) {
+
 			StringTokenizer st = new StringTokenizer(br.readLine(), " ");
 
 			long k = Long.parseLong(st.nextToken());
@@ -45,8 +43,7 @@ public class ITES {
 			LCG rand = new LCG();
 			for (int j = 1; j < n; j++) {
 
-				long signal =  rand.next();
-
+				long signal = rand.next();
 
 				queue.add(signal);
 				sum += signal;
@@ -69,7 +66,6 @@ public class ITES {
 				sb.append("\n");
 			}
 		}
-
 		System.out.println(sb.toString());
 	}
 
