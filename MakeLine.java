@@ -29,6 +29,9 @@ public class MakeLine {
             vertexArray[front].add(back);
         }
 
+        System.out.println(Arrays.toString(indegree));
+        System.out.println(Arrays.toString(vertexArray));
+
         Queue<Integer> tempQueue = new LinkedList<>();
         Queue<Integer> answerQueue = new LinkedList<>();
         int index = 0;
@@ -41,7 +44,7 @@ public class MakeLine {
         while (!tempQueue.isEmpty()) {
             int current = tempQueue.poll();
             answerQueue.add(current);
-
+            // 그 Vertex List를 가져와서 그 안에 값을 forEach로 받는다. 그걸 이제 차수에서 뺴준다.
             for (int to : vertexArray[current]) {
                 indegree[to] -= 1;
                 if(indegree[to]==0){
