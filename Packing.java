@@ -19,6 +19,7 @@ public class Packing {
     static Item[] items = new Item[100];
     static Vector<String> picked = new Vector<>();
 
+
     public static class Item  {
         private String name;
         private int weight;
@@ -84,23 +85,19 @@ public class Packing {
 
     }
 
-    private static int whatToPack(int rest, int item) {
+    private static int whatToPack(int rest, int itemIndex) {
 
-        if(item == count){
-            System.out.println("item == count 걸려서 리턴 0");
+        if(itemIndex == count){
             return 0;
         }
-        if(cache[rest][item] != -1 ){
-            System.out.println("cache[rest][item] != -1 걸려서 리턴 cache[rest][item]");
-            return cache[rest][item];
+        if(cache[rest][itemIndex] != -1 ){
+            return cache[rest][itemIndex];
         }
-        System.out.println(item+"번째 선택안함");
-        cache[rest][item] = whatToPack(maxSize, item+1);
-        if(rest >= items[item].getWeight()){
-            cache[rest][item] = Math.max(cache[rest][item], whatToPack(rest - items[item].getWeight(), item+1) + items[item].getDesperation());
+        cache[rest][itemIndex] = whatToPack(maxSize, itemIndex+1);
+        if(rest >= items[itemIndex].getWeight()){
+            cache[rest][itemIndex] = Math.max(cache[rest][itemIndex], whatToPack(rest - items[itemIndex].getWeight(), itemIndex+1) + items[itemIndex].getDesperation());
         }
-            System.out.println(item+"번째 선택함");
-            return cache[rest][item];
+            return cache[rest][itemIndex];
     }
 
 
