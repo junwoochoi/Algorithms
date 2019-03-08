@@ -9,7 +9,7 @@ import java.util.*;
  * https://www.acmicpc.net/problem/1764
  * 백준 1764번 문제
  */
-public class Bakjoon1764 {
+public class Baekjoon1764 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 

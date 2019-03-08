@@ -7,7 +7,7 @@ import java.util.Scanner;
  * 백준 5585번 문제
  * 거스름돈
  */
-public class Bakjoon5585 {
+public class Baekjoon5585 {
     public static void main(String[] args) {
         int[] currency = {500, 100, 50, 10, 5, 1};
         Scanner sc = new Scanner(System.in);

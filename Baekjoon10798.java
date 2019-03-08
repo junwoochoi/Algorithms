@@ -10,7 +10,7 @@ import java.util.List;
  * https://www.acmicpc.net/problem/10798
  * 백준 세로읽기 10798번
  */
-public class Bakjoon10798 {
+public class Baekjoon10798 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String[] inputs = new String[5];
