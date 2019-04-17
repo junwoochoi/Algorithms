@@ -3,9 +3,6 @@ package Algorithms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * https://www.acmicpc.net/problem/2108
@@ -24,8 +21,8 @@ public class Baekjoon2108 {
         int frequentNumCnt = 1;
 
         for (int i = 0; i < N; i++) {
-            int num =  Integer.parseInt(br.readLine());
-            sumValue+=num;
+            int num = Integer.parseInt(br.readLine());
+            sumValue += num;
             inputs[i] = num + 4000;
             counting[inputs[i]]++;
             frequentNumCnt = Math.max(frequentNumCnt, counting[inputs[i]]);
@@ -36,8 +33,8 @@ public class Baekjoon2108 {
         int sum = 0;
         for (int i = 0; i < 8001; i++) {
             if (counting[i] == 0) continue;
-            if(counting[i] == frequentNumCnt && temp<2){
-                frequentNum=i;
+            if (counting[i] == frequentNumCnt && temp < 2) {
+                frequentNum = i;
                 temp++;
             }
             sum += counting[i];
@@ -52,7 +49,7 @@ public class Baekjoon2108 {
 
         System.out.println((int) Math.round(sumValue / N));
         System.out.println(sorted[N / 2]);
-        System.out.println(frequentNum-4000);
+        System.out.println(frequentNum - 4000);
         System.out.println(sorted[N - 1] - sorted[0]);
 
     }
