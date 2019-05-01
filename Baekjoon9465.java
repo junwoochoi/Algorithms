@@ -3,6 +3,7 @@ package Algorithms;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.StringTokenizer;
 
 /**
@@ -33,16 +34,14 @@ public class Baekjoon9465 {
     }
 
     private static void solution(int[][] stickers) {
-        long sum1 = 0;
-        long sum2 = 0;
+        stickers[1][0] += stickers[0][1];
+        stickers[1][1] += stickers[0][0];
 
-        for (int i = 0; i < stickers.length; i++) {
-            int temp = i % 2 == 0 ? 0 : 1;
-            sum1 += stickers[i][temp];
-            temp = temp == 0 ? 1 : 0;
-            sum2 += stickers[i][temp];
+        for (int i = 2; i < stickers.length; i++) {
+            stickers[i][0] += Math.max(stickers[i-1][1], Math.max(stickers[i-2][0], stickers[i-2][1]));
+            stickers[i][1] += Math.max(stickers[i-1][0], Math.max(stickers[i-2][0], stickers[i-2][1]));
         }
 
-        System.out.println(Math.max(sum1, sum2));
+        System.out.println(Math.max(stickers[stickers.length-1][0], stickers[stickers.length-1][1]));
     }
 }
