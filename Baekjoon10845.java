@@ -44,7 +44,7 @@ public class Baekjoon10845 {
     }
 
 
-    public static class Queue {
+    private static class Queue {
         private Vector<Integer> list = new Vector<>();
 
         public void push(Integer num) {
