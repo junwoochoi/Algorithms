@@ -1,11 +1,9 @@
 package Algorithms;
 
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.StringTokenizer;
 
 /**
@@ -15,7 +13,7 @@ import java.util.StringTokenizer;
 public class Baekjoon6603 {
     private static int[] numbers;
     private static int[] combi;
-    private static StringBuilder
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -25,14 +23,22 @@ public class Baekjoon6603 {
             StringTokenizer st = new StringTokenizer(input);
             int length = Integer.parseInt(st.nextToken());
             numbers = new int[length];
-            combi = new int[length];
+            combi = new int[6];
 
 
             for (int i = 0; i < length; i++) {
                 numbers[i] = Integer.parseInt(st.nextToken());
             }
 
-            lotto(0, 0);
+
+
+            for (int i = 0; i < numbers.length; i++) {
+                combi[0] = numbers[i];
+                lotto(i, 1);
+                combi[0] = 0;
+            }
+
+            System.out.println("");
 
 
             input = br.readLine();
@@ -40,20 +46,20 @@ public class Baekjoon6603 {
     }
 
     private static void lotto(int num, int depth) {
-        if(depth == 6) {                    //탈출조건
-            for(int i=0; i<6; i++) {
-                //조합하나를 출력한 뒤 탈출
+        if (depth == 6) {
+            StringBuilder sb = new StringBuilder();
+            for (int number : combi) {
+                sb.append(number).append(" ");
             }
-
+            System.out.println(sb.toString().trim());
             return;
         }
 
-        for(int i=num; i<k; i++) {    //lotto배열 0부터 k-1까지 탐색함
-            combi[depth] = numbers[i];    //depth는 깊이 -> 0~5번째 깊이까지 재귀를통해 새로 탐색한 숫자를 넣음.
-            lotto(i+1, depth+1);            //재귀 들어가는 부분 , 하나의 깊이를 탐색 후 저장했으니 다음 함수호출할때는 깊이+1을 해줘야함.
+        for (int i = num+1; i < numbers.length; i++) {
+            combi[depth] = numbers[i];
+            lotto(i, depth+1);
+            combi[depth] = 0;
         }
-
-
 
     }
 }
