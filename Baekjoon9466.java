@@ -54,8 +54,10 @@ public class Baekjoon9466 {
             //아직 done이 아니면( 안 끝났는데 다시 돌아왔으므로, 사이클을 이루는 것임)
             if (!done[nextStudent]) {
                 //한바퀴 더 돌면서 사이클을 이루는 학생 수 카운트
-                for (int x = nextStudent; student != x; x = students[x]) {
+                int x = nextStudent;
+                while(x != student){
                     cnt++;
+                    x = students[x];
                 }
                 //자기 자신까지 카운트
                 cnt++;
