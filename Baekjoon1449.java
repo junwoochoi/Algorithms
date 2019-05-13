@@ -20,24 +20,20 @@ public class Baekjoon1449 {
 
         st = new StringTokenizer(br.readLine());
 
-        int[] pipe = new int[1001];
-        boolean[] pipeCheck = new boolean[1001];
+        int[] pipe = new int[holeCount];
 
         for (int i = 0; i < holeCount; i++) {
             pipe[i] = Integer.parseInt(st.nextToken());
         }
 
-        Arrays.sort(pipe, 0, holeCount);
+        Arrays.sort(pipe);
 
-        int count = 0;
-        for (int i = 0; i < holeCount; i++) {
-            if (!pipeCheck[i]) {
+        int count = 1;
+        int temp = pipe[0];
+        for (int i = 1; i < holeCount; i++) {
+            if(pipe[i] - temp > tapeLength - 1){
+                temp = pipe[i];
                 count++;
-
-                for (int j = pipe[i]; j < pipe[i] + tapeLength; j++) {
-                    if(j > 1000) break;
-                    pipeCheck[j] = true;
-                }
             }
         }
 
