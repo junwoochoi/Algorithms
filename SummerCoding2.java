@@ -44,6 +44,8 @@ public class SummerCoding2 {
             dfs(depth + 1, n);
             list.remove(list.size() - 1);
         }
+
+
     }
 
     private static boolean isAvailable() {
