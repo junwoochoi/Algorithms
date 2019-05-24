@@ -29,7 +29,6 @@ public class Baekjoon5014 {
 
         building = new int[F + 1];
         visited = new int[F + 1];
-        Arrays.fill(visited, Integer.MAX_VALUE);
 
 
         solution(F, S, G, U, D);
@@ -46,25 +45,29 @@ public class Baekjoon5014 {
         while (!queue.isEmpty()) {
             int curentFloor = queue.poll();
 
+            if(curentFloor == company){
+                break;
+            }
+
             int upFloor = curentFloor+up;
             int downFloor = curentFloor-down;
 
             if(upFloor<=maxFloor){
-                if(visited[upFloor] > visited[curentFloor]+1){
+                if(visited[upFloor] == 0){
                     visited[upFloor] = visited[curentFloor]+1;
                     queue.add(upFloor);
                 }
             }
 
             if(downFloor>0){
-                if(visited[downFloor]>visited[curentFloor]+1){
+                if(visited[downFloor] == 0){
                     visited[downFloor] = visited[curentFloor]+1;
                     queue.add(downFloor);
                 }
             }
         }
 
-        if(visited[company] == Integer.MAX_VALUE){
+        if(visited[company] == 0){
             System.out.println(USE_STAIRS);
             return;
         }
